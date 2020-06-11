@@ -1,0 +1,121 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+
+<head>
+<link rel="stylesheet" href="/static/css/main.css">
+</head>
+<style media="screen">
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 50px;
+  }
+</style>
+<body>
+
+<hr>
+  <div class="row">
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card mb-3 widget-content bg-arielle-smile">
+                                        <div class="widget-content-wrapper text-black">
+                                            <div class="widget-content-center" style="text-align:center">
+                                                <img src="{% static 'images/icons_std.png' %}" style="width:50px;height:50px;">
+                                                <div class="widget-heading">1</div>
+                                                <div class="widget-subheading">STUDENTS</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card mb-3 widget-content bg-arielle-smile">
+                                        <div class="widget-content-wrapper text-black">
+                                            <div class="widget-content-center" style="text-align:center">
+                                              <img src="{% static 'images/icons_emp.png' %}" style="width:50px;height:50px;">
+                                                <div class="widget-heading">2</div>
+                                                <div class="widget-subheading">EMPLOYEES</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card mb-3 widget-content bg-arielle-smile">
+                                        <div class="widget-content-wrapper text-black">
+                                            <div class="widget-content-center" style="text-align:center">
+                                              <img src="{% static 'images/icons_profit.png' %}" style="width:50px;height:50px;">
+                                                <div class="widget-heading">-11845</div>
+                                                <div class="widget-subheading">PROFIT</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+</div>
+
+<div class="row">
+                            <div class="col-md-12 col-lg-8">
+                              <div class="mb-3 card">
+                            <img src="{% static 'images/graph.png' %}" alt="">
+                            </div>
+                            </div>
+
+<div class="col-md-6 col-xl-4">
+  <div class="mb-3 widget-usage card">
+<ul class="widget widget-usage unstyled span4">
+  <a href="#">
+      <p>
+        <strong>Students Present Today</strong> <span class="pull-right small muted"><span class="count">0</span>%</span>
+      </p>
+      <div class="progress tight">
+        <div class="bar bar-primary progress-bar" style="width: 50%;">
+        </div>
+      </div>
+  </a>
+  <a href="#">
+      <p>
+        <strong>Employees Present Today</strong> <span class="pull-right small muted"><span class="count">0</span>%</span>
+      </p>
+      <div class="progress tight">
+        <div class="bar bar-primary progress-bar" style="width: 50%;">
+        </div>
+      </div>
+  </a>
+  <a href="#">
+      <p>
+        <strong>Fee Submit This Month</strong> <span class="pull-right small muted"><span class="count">0</span>%</span>
+      </p>
+      <div class="progress tight">
+        <div class="bar bar-primary progress-bar" style="width: 50%;">
+        </div>
+      </div>
+  </a>
+</ul>
+</div>
+
+
+<ul class="widget widget-usage unstyled span4 animated bounceInRight">
+                    <ul style="background:#7766cc;">
+                    <font style="background:#7766cc;" style="font-size:20px;color:#fff;">June 2020</font><font class="pull-right" style="font-size:12px;color:#fff;"><form action="dashboard.php" method="post"><button style="background:none;padding:none;margin:none;border:none;color:#fff;" type="submit" name="nafim">Last Month <i class="icon-chevron-right"></i></button></form></font>
+                    </ul>
+                    <ul style="background:#7788cc;">
+										<font style="font-size:12px;color:#fff;"> ESTIMATED EARNING</font><br>
+										<font style="font-size:18px;color:#fff;">42,750</font>
+										<font class="pull-right" ><i class="icon-signal" style="font-size:18px;"></i></font>
+                    </ul>
+										<ul style="background:#7788cc;">
+										<font style="font-size:12px;color:#fff;"> COLLECTIONS</font><br>
+										<font style="font-size:18px;color:#fff;">0</font>
+										<font class="pull-right" ><i class="icon-signal" style="font-size:18px;"></i></font>
+                    </ul>
+										<ul style="background:#7799cc;">
+										<font style="font-size:12px;color:#fff;"> REMAININGS</font><br>
+										<font style="font-size:18px;color:#fff;">42,750</font>
+										<font class="pull-right" ><i class="icon-signal" style="font-size:18px;"></i></font>
+                    </ul>
+									</ul>
+
+
+</body>
+{% endblock %}

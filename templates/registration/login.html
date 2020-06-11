@@ -1,0 +1,105 @@
+
+{% load static %}
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sign In</title>
+
+        <link rel="shortcut icon" type="image/png" href="/static/images/logo.ico">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <link rel="stylesheet" href="/static/css/main.css">
+	<style>
+	label{
+		display:inline-block;
+		width:80px;
+		height:80px;
+		text-align:center;
+		pedding:6px 0;
+		font-size:12px;
+		line-height:1.428571429;
+		border-radius:80px;
+		transition:all 0.3s;
+		border:1px solid white;
+		margin-left:5px;
+	}
+	input[type=radio]{
+		display:none;
+	}
+	.present:checked + label{
+		border:2px solid #3377cc;
+		background:#3377cc;
+	}
+	.leave:checked + label{
+		border:2px solid #3377cc;
+		background:#3377cc;
+	}
+	.absent:checked + label{
+		border:2px solid #3377cc;
+		background:#3377cc;
+	}
+	#load{
+		display:none;
+	}
+
+	.cont {
+        width: 350px;
+        height: 500px;
+        background: rgba(9, 103, 139, 0.36);
+        display:block;
+        position:fixed; /*it can be fixed too*/
+        left:0; right:0;
+        top:0; bottom:0;
+        margin:auto;
+        text-align:center;
+        /*this to solve "the content will not be cut when the window is smaller than the content": */
+        max-width:100%;
+        max-height:100%;
+        overflow:auto;
+    }
+
+	</style>
+
+
+
+<body>
+  <div class="container-fluid">
+<br>
+  <h1> <a> <img src="{% static "images/logo.png" %}" alt="EDSys" height="40" width="130" style="text-center"> </a> </h1> </div>
+    <div class="container">
+<br><br>
+
+
+	<h3 style="color:#fff; background: rgba(9, 103, 139, 0.47); text-align:center">Log in Form</h3>
+<br>
+	<form method="post">
+	<div class="form-group" style="text-align:center">
+<div data-toggle="buttons">
+	<input type="radio" name="s" value="ADMN" id="P" class="present" checked="" ><label for="P"><img src="{% static "images/admin.ico" %}" style="width:50px;height:50px;"><br>Admin</label>
+<input type="radio" name="s" value="EMP" id="L" class="leave"><label for="L"><img src="{% static "images/employee.ico" %}" style="width:50px;height:50px;"><br>Employee</label>
+<input type="radio" name="s" value="STD" id="A" class="absent"><label for="A"><img src="{% static "images/student.ico" %}" style="width:50px;height:50px;"><br>Student</label>
+</div></div>
+<center>
+	<div class="btn-group" style="margin-top:5px; text-align:center">
+	<i class="fas fa-user icon-user btn btn-info waves-effect waves-light active" style="font-size:16px;color:white;"></i> <input type="text" name="username" placeholder="Username or email" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+	</div><br>
+
+  <div class="btn-group" style="margin-top:5px; text-align:center">
+	<i class="fas fa-key icon-lock btn btn-info waves-effect waves-light active" style="font-size:16px;color:white;"></i><input type="password" name="password" placeholder="Password" autocomplete="current-password" required id="id_password">
+	</div> <br><br>
+  {% csrf_token %}
+
+
+
+	<button style="width:160px;height:40px; text-align:center" class="fas fa-lock btn btn-danger waves-effect waves-light" type="submit" value="submit" name="submit" id="submit">
+	 SIGN IN </button>
+	</form><br>
+	<br><i style="color:#111;">Don't have an account ? </i> <a href="/signup"><i class="fas fa-hand-o-right" style="color:#0783f7;><b style="color:#0783f7;"> Sign Up Now ! </i></a>
+  </div>
+
+
+
+</body>

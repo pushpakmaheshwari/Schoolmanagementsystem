@@ -1,0 +1,50 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+<head>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<style media="screen">
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 100px;
+  }
+
+  #rcorners {
+  border-radius: 5px;
+
+}
+</style>
+<body>
+<hr>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6 col-xl-12">
+      <div class="form-row field-subjects">
+        <div class="content">
+          <div class="module">
+            <div class="module-head"><h3 style="color:white">Classes settings</h3></div><br>
+            <div class="module-body" style="text-align:center;">
+              <form action="newwork.php" method="POST">
+                <select name="class" required>
+                  <option>-----SELECT CLASS-----</option>
+                  <option value='23616'>Python Inter Camp</option>
+                  <option value='23508'>Java Bootcamp</option></select><hr>
+                  <button type="submit" class="submit btn btn-primary btn-large" name="updateclass"><a href="/update/{{Classes.id}}"></a> Update</button>
+                  <button type="submit" class="submit btn btn-danger btn-large" name="deleteclass"><a href="/delete/{{Classes.id}}"></a> Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+</div>
+
+</div>
+    </body>
+    {% endblock %}

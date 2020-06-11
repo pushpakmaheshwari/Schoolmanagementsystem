@@ -1,0 +1,138 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/static/images/logo.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="/static/css/main.css">
+  </head>
+
+  <body>
+
+<nav class="navbar navbar-expand-md bg-transparent navbar-dark navbar-inner">
+  <div class="container-fluid">
+
+
+    {% if request.user.is_authenticated is False%}
+  <ul class="nav navbar">
+    <a> <img src="{% static "images/logo.png" %}" alt="EDSys" height="40" width="170"></a>
+    <li class="nav-item"><b><a class="nav-link text-white" href="/"> <span class="fas fa-home"></span> Home</a></b></li>
+    <li class="nav-item"><b><a class="nav-link text-white" href="#"> <span class="fas fa-location-arrow"></span> Features</a></b></li>
+    <li class="nav-item"><b><a class="nav-link text-white" href="#"> <span class="fas fa-id-card"> Why Us</a></b></li>
+    <li class="nav-item"><b><a class="nav-link text-white" href="#"> <span class="fas fa-cog"> Services</a></b></li>
+    <div class="dropdown">
+      <li><b><a class="dropdown-toggle text-white" data-toggle="dropdown" href="#"> <span class="fas fa-server"> More <span class="caret"></span> </a></b>
+   <ul class="dropdown-menu">
+     <li><a class="dropdown-item" href="#">Contact Us</a></li>
+     <li><a class="dropdown-item" class="nav-link text-dark" href="#">About Us</a></li>
+     <li><a class="dropdown-item" class="nav-link text-dark" href="#">Terms & Conditions</a></li>
+   </ul>
+   </li>
+   </div>
+   </ul>
+   {% endif %}
+
+{% if request.user.is_authenticated is False%}
+  <ul class="nav navbar ml-auto">
+    <li class="nav-item"><b><a class="text-white" href="/signup"> <span class="fas fa-user"></span> Sign up</a></b></li>
+    <li class="nav-item"> <b><a class="nav-link text-white" href="/accounts/login"> <span class="fas fa-sign-in-alt"></span> Login</a></b></li>
+    <li><a href="#"><span class="fas fa-search text-white"></span></a></li>
+  </ul>
+{% endif %}
+{% if request.user.is_authenticated is True%}
+<a> <img src="{% static "images/logo.png" %}" alt="EDSys" height="40" width="170"></a>
+<ul class="navbar-nav ml-auto">
+  <li class="nav-item">
+    <div class="btn-group" style="margin-top:5px; text-align:center">
+    <a class="nav-link text-white"><i class="fa fa-user-circle text-white btn btn-info waves-effect waves-light active" ></i><input type="text" placeholder="Search.."><i class="fa fa-search text-white btn btn-info waves-effect waves-light active"></i></a>
+  </div>
+  </li>
+</ul>
+<ul class="navbar-nav ml-auto">
+  <li class="nav-item"><b><a class="nav-link text-white"> <span class="fas fa-envelope"></span></a></b></li>
+  <li class="nav-item"><b><a class="nav-link text-white"> <span class="fas fa-bell"></span></a></b></li>
+  <li class="nav-item"><b><a class="nav-link text-white"> <span class="fas fa-user"></span> Welcome {{request.user}}</a></b></li>
+  <li class="nav-item"><b><a class="nav-link text-white"> <span class="fas fa-cog"></span> Settings</a></b></li>
+  <li class="nav-item"><b><a class="nav-link text-white" href="/accounts/logout"> <span class="fas fa-sign-out-alt"></span> Logout</a></b></li>
+
+</ul>
+{% endif %}
+</nav>
+
+
+{% if request.user.is_authenticated is True%}
+  <div class="sidenav">
+    <a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+    <a href="/instituteinfo"><i class="fas fa-building"></i> Institute Info</a>
+    <button class="dropdown-btn"><i class="fas fa-users"></i> Classes
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="/allclasses"><i class="fas fa-users"></i> All Classes</a>
+      <a href="/newclass"><i class="fas fa-plus"></i> New Class</a>
+      <a href="/editclass"><i class="fas fa-pen"></i> Edit/Delete a Class</a>
+      <a href="/subjectstoclasses"><i class="fas fa-book"></i> Subjects to Classes</a>
+      <a href="/addsubjects"><i class="fas fa-plus"></i> Add Subjects</a>
+    </div>
+    <button class="dropdown-btn"><i class="fas fa-user-graduate"></i> Students
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="#"><i class="fas fa-users"></i> All Students</a>
+      <a href="#"><i class="fas fa-plus"></i> New Student/Admission</a>
+      <a href="#"><i class="fas fa-pen"></i> Edit/Delete a Student</a>
+      <a href="#"><i class="fas fa-book"></i> Admission Letter</a>
+    </div>
+    <button class="dropdown-btn"><i class="fas fa-bars"></i> Employees
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="#"><i class="fas fa-users"></i> All Employees</a>
+      <a href="#"><i class="fas fa-plus"></i> New Employee</a>
+    </div>
+    <a href="#"><i class="fas fa-user-circle"></i> Accounts</a>
+    <a href="#"><i class="fas fa-clipboard"></i> Attendance</a>
+    <a href="#"><i class="fas fa-dollar-sign"></i> Fees</a>
+    <a href="#"><i class="fas fa-money-bill-wave"></i> Salary</a>
+    <a href="#"><i class="fas fa-bars"></i> Exams</a>
+    <a href="#"><i class="fas fa-copy"></i> Class Test</a>
+    <a href="#"><i class="fas fa-calendar-alt"></i> Time Table</a>
+    <a href="#"><i class="fas fa-certificate"></i> Certificates</a>
+    <a href="#"><i class="fas fa-bars"></i> Students Promotions</a>
+    <a href="/accounts/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+{% endif %}
+<script>
+  /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  var i;
+
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+    dropdownContent.style.display = "none";
+    } else {
+    dropdownContent.style.display = "block";
+    }
+    });
+  }
+  </script>
+
+
+{% block parentblock %}
+
+{% endblock %}
+
+
+  </body>
+</html>
+</div>
