@@ -1,0 +1,28 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<style media="screen">
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 50px;
+  }
+</style>
+
+<body>
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-xl-12">
+      <div class="card style="text-align:center"">
+        <div class="content" style="text-align:center;margin-top:15px;">
+          <h1>{{rn.name_of_student}}</h1>
+
+
+
+{% endblock %}

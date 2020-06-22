@@ -3,12 +3,10 @@ from EDApp.forms import SignupForm
 from django.conf import settings
 from django.core.mail import send_mail
 from django.views.generic import View, ListView, TemplateView, CreateView, UpdateView, DeleteView, DetailView
-from EDApp.models import Classes
-from EDApp.models import Students
+from EDApp.models import Info, Classes, Students
 from django.urls import reverse
+
 # Create your views here.
-
-
 
 def SignupPage(request):
     signupform = SignupForm()
@@ -30,18 +28,15 @@ def HomePage(request):
 def AdminHomePage(request):
     return render(request, 'EDApp/dashboardpage.html')
 
-def InstituteInfo(request):
-    return render(request, 'EDApp/instituteinfo.html')
-
 
 class AllClasses(ListView):
     model = Classes
 
 class NewClass(CreateView):
     model = Classes
-    fields = ['name_of_class','monthly_fees','total_students']
+    fields = ['name_of_class','monthly_fees','total_students','marks']
     def get_success_url(self):
-        return reverse('home')
+        return reverse('homeclass')
 
 def EditClass(request):
     model = Classes
@@ -51,23 +46,66 @@ def EditClass(request):
 
 class UpdateClass(UpdateView):
     model = Classes
-    fields = ['name_of_class','monthly_fees','total_students']
+    fields = ['name_of_class','monthly_fees','total_students','marks']
     def get_success_url(self):
-        return reverse('home')
+        return reverse('homeclass')
 
 class DeleteClass(DeleteView):
     model = Classes
     fields = ['name_of_class','monthly_fees','total_students']
     def get_success_url(self):
-        return reverse('home')
+        return reverse('homeclass')
 
 class AddSubjects(CreateView):
     model = Classes
     fields = ['subjects','marks']
     template_name = 'EDApp/addsubjects.html'
     def get_success_url(self):
-        return reverse('home')
+        return reverse('homeclass')
 
 class SubjectstoClasses(ListView):
     model = Classes
     template_name = 'EDApp/subjectstoclasses.html'
+
+class AllStudents(ListView):
+    model = Students
+
+class NewStudent(CreateView):
+    model = Students
+    fields = '__all__'
+    def get_success_url(self):
+        return reverse('homestudent')
+
+class DeleteStudent(DeleteView):
+    model = Students
+    fields = '__all__'
+    def get_success_url(self):
+        return reverse('homestudent')
+
+class UpdateStudent(UpdateView):
+    model = Students
+    fields = '__all__'
+    def get_success_url(self):
+        return reverse('homestudent')
+
+class Instituteinfo(ListView):
+    model = Info
+
+class Updateinfo(UpdateView):
+    model = Info
+    fields = '__all__'
+    def get_success_url(self):
+        return reverse('homeinstitute')
+
+
+class AdmissionLetter(ListView):
+    model = Students
+    template_name = 'EDApp/admissionletter.html'
+    context_object_name = 'reg_no'
+
+class PrintDetail(DetailView):
+    model = Students
+    fields = '__all__'
+    template_name = 'EDApp/printfile.html'
+    def get_success_url(self):
+        return reverse('homestudent')

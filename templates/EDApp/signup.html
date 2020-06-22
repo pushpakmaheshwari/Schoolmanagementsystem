@@ -41,8 +41,7 @@
                   Email address
               </label> <div class=""> <input type="email" name="email" maxlength="254" class="emailinput form-control" id="id_email"> </div> </div> <div id="div_id_password" class="form-group"> <label for="id_password" class=" requiredField">
                   Password<span class="asteriskField">*</span> </label> <div class=""> <input type="password" name="password" maxlength="128" class="textinput textInput form-control" required id="id_password"> </div> </div>
-
-  <input type="hidden" name="csrfmiddlewaretoken" value="92wnnlJq8ZPxXwiYlqaX32QJ50hoFrp1OC6RNptBpVidL8B6AxBZB9c7wTfGr1FZ">
+{% csrf_token %}
   <center><input type="submit" value="Sign up" class="btn btn-danger"></center>
 
   </form>

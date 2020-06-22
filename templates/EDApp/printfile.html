@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/static/images/logo.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="/static/css/main.css">
+  </head>
+<div class="container" class="row-fluid" style="background:white;" >
+  <div class="module row-fluid" id="area" class="row-fluid" style="background:white;">
+    <div class="module-head" style="text-align:center;" >
+      <div style="float:right;margin:10px;"><a onclick="window.print()" class="btn btn-sm" style="border:0px;border-bottom:2px solid orange;"><i class="fas fa-print"></i></a></div>
+      <img src="data:image/png;base64,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" style="width:60px;height:55px;"><br>
+      <font style="font-size:20px;font-weight:bold;color:black;">EDSYSTANGO</font>
+			<br>
+			<i class="fas fa-phone"></i> 56565 |
+			<i class="fas fa-flag"></i> India |
+			<i class="fas fa-globe"></i> www.edsystango.com<br>
+
+
+
+								<font style="font-size:20px;color:brown;font-weight:bold;">Admission Letter</font>
+
+							    <hr>
+							</div>
+														<div class="module-body" style="color:#555;" class="row-fluid" style="background:white;">
+							<div class="row-fluid" style="background:white;">
+                            <table style="width:100%;"><tr style="border:none;"><td>
+							<img src=uploads/students/ width=100px height=100px>							</td>
+							<td>
+							<u><table>
+							<tr>
+							<td>
+							Student Name:<b>  </b>
+							</td>
+							<td>
+							<b>{{students.name_of_student}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Registration No:
+							</td>
+							<td>
+							<b>{{students.registration_number}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Serial No.:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Class:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							</table>
+							</td>
+							<td>
+							<u><table>
+							<tr>
+							<td>
+							Date Of Birth: <b> </b>
+							</td>
+							<td>
+							<b>{{students.dob}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Mobile No.:
+							</td>
+							<td>
+							<b>{{students.mobile_number}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Gender: <b></b>
+							</td>
+							<td>
+							<b> {{students.gender}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Religion:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							</table>
+							</td>
+							<td>
+							<u><table>
+							<tr>
+							<td>
+							Date Of Admission: <b> </b>
+							</td>
+							<td>
+							<b> {{students.adminssion_date}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Discount In Fee:
+							</td>
+							<td>
+							<b> ____% </b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							User Name:
+							</td>
+							<td>
+							<b> {{students.username}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Password:
+							</td>
+							<td>
+							<b> {{students.password}}</b>
+							</td>
+							</tr>
+							</table>
+							</td>
+							</tr>
+							</table>
+							</div>
+							<div class="row-fluid" style="background:white;border-bottom:0px solid gray;">
+							<table style="text-align:center;width:100%;">
+							<tr><td><hr style="height:1px;border-width:0;color:gray;background-color:gray">
+							<b>Students Portal URL : http://student.edsystango.com</b> - please use this URL to login your account
+							</td></tr>
+							<tr>
+							<td><hr style="height:1px;border-width:0;color:gray;background-color:gray">
+							Home Address: <b><i>" {{students.address}} "</i></b>
+							</td>
+							</tr>
+							</table>
+
+							</div>
+							<div class="row-fluid" style="background:white;">
+                            <table style="width:100%;"><tr>
+							<td>
+							<u><table>
+							<tr>
+							<td>
+							Father Name:
+							</td>
+							<td>
+							<b> {{students.father_name}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Mother Name:
+							</td>
+							<td>
+							<b>{{students.mother_name}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Cast:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Orphen Student:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							OSC:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Previous School:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							No. Of Children:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+
+							</table>
+							</td>
+							<td>
+							<u><table>
+							<tr>
+							<td>
+							Father CNIC:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Father Education:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Father Mobile:
+							</td>
+							<td>
+							<b> {{students.father_mobile_number}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Father Occupation:
+							</td>
+							<td>
+							<b> {{students.father_occupation}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Father Profession:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Father Income:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							</table>
+							</td>
+							<td>
+							<u><table>
+							<tr>
+							<td>
+							Mother CNIC:
+							</td>
+							<td>
+							<b> </b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Mother Education:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Mother Mobile:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Mother Occupation:
+							</td>
+							<td>
+							<b>{{students.mother_occupation}}</b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Mother Profession:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							<tr>
+							<td>
+							Mother Income:
+							</td>
+							<td>
+							<b></b>
+							</td>
+							</tr>
+							</table>
+							</td>
+							</tr>
+							</table>
+							</div>
+              <hr style="height:1px;border-width:0;color:gray;background-color:gray">
+							<u><b>Rules And Regulations: </b><br></u>
+							1) aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa <br>2) bbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+              <hr style="height:1px;border-width:0;color:gray;background-color:gray">
+							<div  style="background:white; float:left;margin:10px;">Signature Of Authority:___________________________ </div>
+							<div  style="background:white; float:right;margin:10px;">Institute Stamp:________________________________ </div>
+							</div>
+						</div>
+            </div>

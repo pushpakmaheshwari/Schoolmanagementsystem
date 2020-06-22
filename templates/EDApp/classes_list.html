@@ -5,8 +5,6 @@
   <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <style media="screen">
-
-
   .row {
     margin-left: 250px; /* Same as the width of the sidenav */
     font-size: 20px; /* Increased text to enable scrolling */
@@ -32,7 +30,7 @@
                 <img src="{% static 'images/table.png' %}" style="width:50px;height:50px;">
                 <div>{{class.name_of_class}}</div>
                 <div><button class="btn btn-warning">Total Students: {{class.total_students}}</div>
-                <button class="btn btn-success"><a href="/update/{{class.id}}" style="color:#111111"><i class="fas fa-pen"></i> Update</a> <a href="/delete/{{class.id}}" style="color:#111111"><button class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                <button class="btn btn-success btn-sm"><a href="/updateclass/{{class.id}}" style="color:#111111"><i class="fas fa-pen"></i> Update</a> <button class="btn btn-danger btn-sm"><a href="/delete/{{class.id}}" style="color:#111111"><i class="fas fa-trash"></i> Delete</a>
 
 
             </div>

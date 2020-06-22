@@ -24,13 +24,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-xl-12">
-        <div class="card" style="text-align:center"><br>
-
-    <form method="post" style="text-align:center"><br>
-    <h3>Are you sure you want to delete class{{class.name_of_class}}?</h3>
+        <div class="card style="text-align:center><br>
+					<h3 style="text-align:center">Update Institute Info</h3>
+    <form method="post" enctype="multipart/form-data" style="text-align:center"><br>
+      {{form.as_p}}
    {% csrf_token %}
-  <button type="submit" value="Submit" class="btn btn-primary btn btn-large">Submit</button>
-  <a href="/allclasses" class="btn btn-primary btn btn-large">Cancel</a><br>
+  <button type="submit" class="btn btn-primary btn btn-large">Submit</button><br>
   </form><br>
   </div>
 </div>

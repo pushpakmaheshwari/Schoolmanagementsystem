@@ -1,0 +1,131 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="/static/css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+  $(".btn1").click(function(){
+    $(".kaam").slideUp();
+    $(".rnr").slideDown();
+  });
+  $(".btn2").click(function(){
+  	$(".kaam").slideUp();
+    $(".feep").slideDown();
+  });
+  $(".btn3").click(function(){
+  	$(".kaam").slideDown();
+    $(".rnr").slideUp();
+  });
+  $(".btn4").click(function(){
+  	$(".kaam").slideDown();
+    $(".feep").slideUp();
+  });
+  });
+  </script>
+</head>
+<style media="screen">
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 50px;
+  }
+
+  .rnr{
+	display:none;
+}
+
+  .feep{
+	display:none;
+}
+
+  .collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+</style>
+<body>
+<hr>
+<div class="container">
+<div class="row">
+
+{% if info_list %}
+{% for info in info_list %}
+<div class="col-md-8 col-xl-12">
+  <div class="widget-content-wrapper text-white">
+    <div class="widget-content-center" style="text-align:center">
+          <div class="kaam">
+          <img src="{% static 'images/logo.png' %}" style="width:100px; height:auto;">
+					<h1 style="margin-bottom:0px;">{{info.institute_name}}</h1>
+					<h5 style="margin:0px;">{{info.target_line}} </h5>
+					<i class="fas fa-phone" > {{info.phone_number}}</i> | <i class="fas fa-envelope" > anshuman@systango.com</i> | <i class="fas fa-globe" > {{info.website_name}}/</i>
+					<hr>
+					<i class="fas fa-road"> {{info.address}}</i><br>
+          <i class="fas fa-flag"> India</i><br>
+          <hr>
+					<button class="btn btn-primary" id="change"><a href="/updateinfo/{{info.id}}" style="color:#111111"><i class="fas fa-pen"></i> Change</a> </button>
+          <hr>
+
+          <button class="btn btn-danger btn1"><i class="fas fa-edit"></i> Rules & Regulations</button> | <button class="btn btn-success btn2"><i class="fas fa-edit"></i> Fees Particulars</button>
+          </div>
+           <div class="rnr">
+             <h4 style="color:white;"><i class="fas fa-arrow-left btn3"></i> Rules & Regulations</h4>
+					<form action="" method="post">
+										<textarea name="rules" style="width:90%;margin-top:10px;"  rows="15">
+                      1) aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      2) bbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                      3) cccccccccccc cccccccccccccccc cccccccccccccccccccccccccccc cccccccccccccccccc
+                      4) dddddddddd ddddddddddddddddddd  ddddddddddddddddddddddd ddddddddddddddddddddddddddddd
+                      5) eeee eeeee eeeeeeeeeeeeee eeeeeeeeeeeeeee eeeee</textarea>
+										<button class="btn btn-primary" style="width:200px;padding:10px;" name="changerules" type="submit"><i class="fas fa-ok"></i> Save Changes</button>
+					</form>
+          </div>
+
+          <div class="feep">
+					<h4 style="color:white;"><i class="fas fa-arrow-left btn4"></i> Fee Particulars</h4>
+					<form method="post">
+					<input type="text" name="p1" placeholder="ADMISSION FEE" required><br>
+					<input type="text" name="p2" placeholder="REGISTRATION FEE" required><br>
+					<input type="text" name="p3" placeholder="ART MATERIAL" required><br>
+					<input type="text" name="p4" placeholder="TRANSPORT" required><br>
+					<input type="text" name="p5" placeholder="BOOKS" required><br>
+					<input type="text" name="p6" placeholder="UNIFORM" required><br>
+					<input type="text" name="p7" placeholder="FINE" required><br>
+					<input type="text" name="p8" placeholder="OTHERS" required> <br>
+					<button class="btn btn-primary" style="width:200px;padding:10px;" name="changep" type="submit"><i class="fas fa-ok"></i> Save Changes</button>
+					</form>
+					</div>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    No Data Found
+    {% endif %}
+  </div>
+  </div>
+
+</body>
+{% endblock %}

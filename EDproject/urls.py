@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from EDApp import views
 from django.urls import include
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,12 +25,19 @@ urlpatterns = [
     path('', views.HomePage),
     path('accounts/', include('django.contrib.auth.urls')),
     path('dashboard/', views.AdminHomePage),
-    path('instituteinfo/', views.InstituteInfo),
-    path('allclasses/', views.AllClasses.as_view(),name='home'),
+    path('info/', views.Instituteinfo.as_view(),name='homeinstitute'),
+    path('updateinfo/<pk>', views.Updateinfo.as_view()),
+    path('allclasses/', views.AllClasses.as_view(),name='homeclass'),
     path('newclass/', views.NewClass.as_view()),
     path('editclass/', views.EditClass),
-    path('update/<pk>', views.UpdateClass.as_view()),
+    path('updateclass/<pk>', views.UpdateClass.as_view()),
     path('delete/<pk>', views.DeleteClass.as_view()),
     path('addsubjects/', views.AddSubjects.as_view()),
     path('subjectstoclasses/', views.SubjectstoClasses.as_view()),
+    path('allstudents/', views.AllStudents.as_view(),name='homestudent'),
+    path('newstudent/', views.NewStudent.as_view()),
+    path('deletestudent/<pk>', views.DeleteStudent.as_view()),
+    path('updatestudent/<pk>', views.UpdateStudent.as_view()),
+    path('admissionletter/', views.AdmissionLetter.as_view()),
+    path('printletter/<pk>',views.PrintDetail.as_view()),
 ]

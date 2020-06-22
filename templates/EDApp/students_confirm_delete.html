@@ -27,10 +27,10 @@
         <div class="card" style="text-align:center"><br>
 
     <form method="post" style="text-align:center"><br>
-    <h3>Are you sure you want to delete class{{class.name_of_class}}?</h3>
+    <h3>Are you sure you want to delete student{{student.name_of_student}}?</h3>
    {% csrf_token %}
-  <button type="submit" value="Submit" class="btn btn-primary btn btn-large">Submit</button>
-  <a href="/allclasses" class="btn btn-primary btn btn-large">Cancel</a><br>
+  <button type="submit" class="btn btn-primary btn btn-large">Submit</button>
+  <a href="/allstudents" class="btn btn-primary btn btn-large">Cancel</a><br>
   </form><br>
   </div>
 </div>

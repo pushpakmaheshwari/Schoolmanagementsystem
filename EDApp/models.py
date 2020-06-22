@@ -11,18 +11,16 @@ SUBJECT_CHOICES = (
 )
 
 GENDER_CHOICES =(
-    ('male','MALE'),
-    ('female','FEMALE'),
+    ('Male','MALE'),
+    ('Female','FEMALE'),
 )
 
-class Classes(models.Model):
-    name_of_class=models.CharField(max_length=100)
-    monthly_fees=models.DecimalField(max_digits=10,decimal_places=2)
-    subjects=models.CharField(max_length=50, choices=SUBJECT_CHOICES, default="")
-    marks=models.CharField(max_length=100)
-    total_students = models.CharField(max_length=50, default='')
-    def __str__(self):
-        return self.name_of_class
+class Info(models.Model):
+    institute_name = models.CharField(max_length=100)
+    target_line = models.CharField(max_length=200)
+    phone_number = models.CharField(max_length=20)
+    website_name = models.CharField(max_length=100)
+    address = models.CharField(max_length=300)
 
 
 class Students(models.Model):
@@ -34,5 +32,22 @@ class Students(models.Model):
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, default="")
     address = models.CharField(max_length=300)
     father_name = models.CharField(max_length=100)
-    occupation = models.CharField(max_length=50)
+    mother_name = models.CharField(max_length=100, default="")
+    father_occupation = models.CharField(max_length=50)
+    mother_occupation = models.CharField(max_length=50, default="")
     father_mobile_number = models.CharField(max_length=20)
+    username = models.CharField(max_length=50, default="")
+    password = models.CharField(max_length=50, default="")
+    def __str__(self):
+        return self.name_of_student
+
+
+class Classes(models.Model):
+    name_of_class=models.CharField(max_length=100)
+    monthly_fees=models.DecimalField(max_digits=10,decimal_places=2)
+    subjects=models.CharField(max_length=50, choices=SUBJECT_CHOICES)
+    marks=models.CharField(max_length=100)
+    total_students = models.CharField(max_length=50, default='')
+    reg_no = models.ForeignKey(Students, on_delete=models.CASCADE, null=True, default="")
+    def __str__(self):
+        return self.name_of_class
