@@ -15,6 +15,11 @@ GENDER_CHOICES =(
     ('Female','FEMALE'),
 )
 
+EMPLOYEE_TYPE = (
+    ('Teaching Staff','TEACHING STAFF'),
+    ('Non-Teaching','NON-TEACHING'),
+)
+
 class Info(models.Model):
     institute_name = models.CharField(max_length=100)
     target_line = models.CharField(max_length=200)
@@ -51,3 +56,19 @@ class Classes(models.Model):
     reg_no = models.ForeignKey(Students, on_delete=models.CASCADE, null=True, default="")
     def __str__(self):
         return self.name_of_class
+
+
+class Employee(models.Model):
+    name_of_employee = models.CharField(max_length=100)
+    joining_date = models.DateField(max_length=10)
+    dob = models.DateField(max_length=10)
+    Employee_type = models.CharField(max_length=30, choices=EMPLOYEE_TYPE)
+    monthly_salary = models.IntegerField()
+    mobile_number = models.CharField(max_length=20)
+    father_name = models.CharField(max_length=100)
+    experience = models.CharField(max_length=50)
+    gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
+    email = models.CharField(max_length=30)
+    address = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name_of_employee

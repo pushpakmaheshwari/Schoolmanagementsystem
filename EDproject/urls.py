@@ -40,4 +40,8 @@ urlpatterns = [
     path('updatestudent/<pk>', views.UpdateStudent.as_view()),
     path('admissionletter/', views.AdmissionLetter.as_view()),
     path('printletter/<pk>',views.PrintDetail.as_view()),
+    path('allemployees/',views.AllEmployees.as_view(),name='homeemployee'),
+    path('newemployee/',views.NewEmployees.as_view()),
+    path('updateemployee/<pk>', views.UpdateEmployee.as_view()),
+    path('deleteemployee/<pk>', views.DeleteEmployee.as_view()),
 ]

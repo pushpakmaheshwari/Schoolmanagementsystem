@@ -24,12 +24,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-xl-12">
-        <div class="card style="text-align:center><br>
-					<h3 style="text-align:center">New Class Form</h3>
-    <form method="post" enctype="multipart/form-data" style="text-align:center"><br>
-      {{form.as_p}}
+        <div class="card" style="text-align:center"><br>
+
+    <form method="post" style="text-align:center"><br>
+    <h3>Are you sure you want to delete Employee {{employee.name_of_employee}}?</h3>
    {% csrf_token %}
-  <button type="submit" class="btn btn-primary btn btn-large">Submit</button><br>
+  <button type="submit" value="Submit" class="btn btn-primary btn btn-large">Submit</button>
+  <a href="/allemployees" class="btn btn-primary btn btn-large">Cancel</a><br>
   </form><br>
   </div>
 </div>

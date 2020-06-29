@@ -1,0 +1,93 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+<head>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<style media="screen">
+
+
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 50px;
+  }
+  .row1 {
+    margin-left: 460px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 170px;
+  }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+<body>
+<hr>
+<div class="container">
+<div class="row">
+
+{% if employee_list %}
+{% for employee in employee_list %}
+<div class="col-md-6 col-xl-3">
+    <div class="card mb-3 text3 bg-arielle-smile">
+        <div class="widget-content-wrapper text-black">
+            <div class="widget-content-center" style="text-align:center">
+              <div style="float:left;text-align:center;margin-top:20px;width:155px;line-height:10px;">
+            								<img src="{% static 'images/student.png' %}" class="img-circle" style="width:60px;height:60px;">
+            								<br><b style="font-size:11px;color:#333;">{{employee.name_of_employee}}</b><br><i style="font-size:11px;color:black;">{{employee.Employee_type}}</i><br>
+
+            								<input type="text" name="id" style="display:none;"><br>
+            								<button class="btn btn-sm" type="submit" style="border:0px;border-bottom:2px solid orange;" name="sview" title="search"><i class="fas fa-search"></i></button>
+            								<button class="btn btn-sm" type="submit" style="border:0px;border-bottom:2px solid orange;" name="sedit" title="update"><a href="/updateemployee/{{employee.id}}" style="color:#111111"><i class="fas fa-pen"></i></button>
+            								<button class="btn btn-sm" style="border:0px;border-bottom:2px solid orange;" title="delete"><a href="/deleteemployee/{{employee.id}}" style="color:#111111"><i class="fas fa-trash"></i></a></button>
+
+                            {% csrf_token %}
+
+            								</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+{% endfor %}
+{% else %}
+No Data Found
+{% endif %}
+
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row1">
+<a href="/newemployee" style="background:none; text-align:center"><button class="btn btn-warning btn-lg" style="border-radius:50%;width:120px;height:120px;"><i class="fas fa-plus"  style="color:#333;"></i>
+  <hr style="margin:2px;">Add New Employee</button>
+
+<!-- WARNING: <a href="/update/{{Classes.id}}" style="background:none; text-align:center"><button class="btn btn-warning btn-lg" style="border-radius:50%;width:120px;height:120px;"><i class="fas fa-pen"  style="color:#333;"></i>
+  <hr style="margin:2px;">Update Class</button>
+<a href="/delete/{{Classes.id}}" style="background:none; text-align:center"><button class="btn btn-warning btn-lg" style="border-radius:50%;width:120px;height:120px;"><i class="fas fa-trash"  style="color:#333;"></i>
+  <hr style="margin:2px;">Delete Class</button> -->
+</div>
+</div>
+</body>
+
+{% endblock %}

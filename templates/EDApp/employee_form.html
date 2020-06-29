@@ -1,0 +1,175 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+<head>
+  <link rel="stylesheet" href="/static/css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+  $(".f1c").click(function(){
+    $(".kaam").slideToggle();
+  });
+  });
+</script>
+</head>
+<style media="screen">
+
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 50px;
+  }
+
+  #f1,#f2{
+	border:1px solid #fff;
+	color:#fff;
+	cursor:pointer;
+	padding:2px 6px;
+	background:#777;
+}
+
+.kaam{
+  display:none;
+}
+
+  #rcorners {
+  border-radius: 5px;
+
+}
+</style>
+<body>
+<hr>
+
+
+  <div class="row">
+    <div class="col-md-6 col-xl-12">
+        <div class="card style="text-align:center><br>
+					<h3 style="text-align:center">Employee Form</h3><br>
+          <form method="post" enctype="multipart/form-data">
+            <h4 style="color:#fff;padding:5px;background:skyblue;"> BASIC INFORMATION * <i class="fas fa-chevron-up" id="f1" style="float:right;"></i></h4>
+          <div class="container">
+          <table style="width:100%;"><tr >
+          <td>
+          <table>
+          <tr>
+          <td>
+          <p><label for="id_name_of_employee"></label> <input placeholder="Name of employee" type="text" name="name_of_employee" maxlength="100" required id="id_name_of_employee"></p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <label>Picture: <i>optional</i><br> <input type="file" name="fileToUpload" id="fileToUpload" ><br><i>(Max size 100KB)</i></label>
+          </td>
+          </tr>
+          </table>
+          </td>
+
+
+          <td>
+          <table>
+          <tr>
+          <td>
+            Joining Date:
+            <p><label for="id_joining_date"></label> <input placeholder="yyyy/mm/dd" type="text" name="joining_date" required id="id_joining_date"></p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><label for="id_mobile_number"></label> <input placeholder="Mobile number" type="text" name="mobile_number" maxlength="20" required id="id_mobile_number"></p>
+          </td>
+          </tr>
+          </table>
+          </td>
+
+
+          <td>
+          <table>
+          <tr>
+          <td>
+            <p><label for="id_Employee_type"></label> <select name="Employee_type" required id="id_Employee_type">
+                <option value="" selected>-----Employee type-----</option>
+                <option value="Teaching Staff">TEACHING STAFF</option>
+                <option value="Non-Teaching">NON-TEACHING</option>
+            </select></p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><label for="id_monthly_salary"></label> <input placeholder="Monthly salary" type="number" name="monthly_salary" required id="id_monthly_salary"></p>
+          </td>
+          </tr>
+          </table>
+          </td>
+          </tr>
+          </table>
+          </div>
+
+
+
+<h4 style="color:#fff;padding:5px;background:skyblue;"> OTHER INFO <i>(optional)</i><i class="fas fa-chevron-down f1c" id="f2" style="float:right;"></i></h4>
+<div class="container kaam">
+  <table style="width:100%;"><tr >
+  <td>
+  <table>
+  <tr>
+  <td>
+  <p><label for="id_father_name"></label> <input placeholder="Father name" type="text" name="father_name" maxlength="100" required id="id_father_name"></p>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  Date Of Birth:
+  <p><label for="id_dob"></label> <input type="text" name="dob" required id="id_dob"></p>
+  </td>
+  </tr>
+  </table>
+  </td>
+
+  <td>
+  <table>
+  <tr>
+  <td>
+  <p><label for="id_experience"></label> <input placeholder="Experience" type="text" name="experience" maxlength="50" required id="id_experience"></p>
+  </td>
+  </tr>
+  <tr>
+  <td>
+    <p><label for="id_gender">Gender:</label> <select name="gender" required id="id_gender">
+      <option value="" selected>---------</option>
+      <option value="Male">MALE</option>
+      <option value="Female">FEMALE</option>
+    </select></p>
+  </td>
+  </tr>
+  </table>
+  </td>
+
+  <td>
+  <table>
+  <tr>
+  <td>
+  <p><label for="id_email"></label> <input placeholder="Email address" type="text" name="email" maxlength="30" required id="id_email"></p>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <p><label for="id_address"></label> <input placeholder="Address" type="text" name="address" maxlength="100" required id="id_address"></p>
+  </td>
+  </tr>
+  </table>
+  </td>
+  </tr>
+  </table>
+
+</div>
+
+   {% csrf_token %}
+  <p style="text-align:center;"><button type="submit" class="btn btn-primary btn btn-large" style="text-align:center">Submit</button></p>
+  </form>
+  </div>
+</div>
+</div>
+
+</body>
+{% endblock %}

@@ -3,7 +3,7 @@ from EDApp.forms import SignupForm
 from django.conf import settings
 from django.core.mail import send_mail
 from django.views.generic import View, ListView, TemplateView, CreateView, UpdateView, DeleteView, DetailView
-from EDApp.models import Info, Classes, Students
+from EDApp.models import Info, Classes, Students, Employee
 from django.urls import reverse
 
 # Create your views here.
@@ -109,3 +109,25 @@ class PrintDetail(DetailView):
     template_name = 'EDApp/printfile.html'
     def get_success_url(self):
         return reverse('homestudent')
+
+class AllEmployees(ListView):
+    model = Employee
+
+
+class NewEmployees(CreateView):
+    model = Employee
+    fields = '__all__'
+    def get_success_url(self):
+        return reverse('homeemployee')
+
+class UpdateEmployee(UpdateView):
+    model = Employee
+    fields = '__all__'
+    def get_success_url(self):
+        return reverse('homeemployee')
+
+class DeleteEmployee(DeleteView):
+    model = Employee
+    fields = '__all__'
+    def get_success_url(self):
+        return reverse('homeemployee')
