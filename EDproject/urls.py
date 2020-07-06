@@ -24,9 +24,15 @@ urlpatterns = [
     path('signup/', views.SignupPage),
     path('', views.HomePage),
     path('accounts/', include('django.contrib.auth.urls')),
+
+# Dashboard URL :
     path('dashboard/', views.AdminHomePage),
+
+# Institute Info URL's :
     path('info/', views.Instituteinfo.as_view(),name='homeinstitute'),
     path('updateinfo/<pk>', views.Updateinfo.as_view()),
+
+# Classes URL's :
     path('allclasses/', views.AllClasses.as_view(),name='homeclass'),
     path('newclass/', views.NewClass.as_view()),
     path('editclass/', views.EditClass),
@@ -34,16 +40,23 @@ urlpatterns = [
     path('delete/<pk>', views.DeleteClass.as_view()),
     path('addsubjects/', views.AddSubjects.as_view()),
     path('subjectstoclasses/', views.SubjectstoClasses.as_view()),
+
+# Students URL's :
     path('allstudents/', views.AllStudents.as_view(),name='homestudent'),
     path('newstudent/', views.NewStudent.as_view()),
     path('deletestudent/<pk>', views.DeleteStudent.as_view()),
     path('updatestudent/<pk>', views.UpdateStudent.as_view()),
     path('admissionletter/', views.AdmissionLetter.as_view()),
     path('printletter/<pk>',views.PrintDetail.as_view()),
+
+# Employees URL's :
     path('allemployees/',views.AllEmployees.as_view(),name='homeemployee'),
     path('newemployee/',views.NewEmployees.as_view()),
     path('updateemployee/<pk>', views.UpdateEmployee.as_view()),
     path('deleteemployee/<pk>', views.DeleteEmployee.as_view()),
+
+
+# Accounts URL's :
     path('accountstatement/',views.AccountStatement, name='homeaccount'),
     path('addincome/',views.AddIncome.as_view()),
     path('addexpense/',views.AddExpense.as_view()),

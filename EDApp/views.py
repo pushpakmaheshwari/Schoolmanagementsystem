@@ -21,8 +21,6 @@ def SignupPage(request):
             mydict.update({'msg':'Registered Successfully'})
     return render(request, 'EDApp/signup.html',context=mydict)
 
-
-
 def HomePage(request):
     return render(request, 'EDApp/homepage.html')
 
@@ -34,6 +32,9 @@ def AdminHomePage(request):
     total_profit = income_sum - expense_sum
     return render(request, 'EDApp/dashboardpage.html', {'total_students':total_students, 'total_employee':total_employee, 'total_profit':total_profit})
 
+
+
+# Classes Business codes: -------------------------------------------------------------------->
 
 class AllClasses(ListView):
     model = Classes
@@ -73,6 +74,10 @@ class SubjectstoClasses(ListView):
     model = Classes
     template_name = 'EDApp/subjectstoclasses.html'
 
+
+
+# Students Business codes: ------------------------------------------------------------------------->
+
 class AllStudents(ListView):
     model = Students
 
@@ -94,6 +99,11 @@ class UpdateStudent(UpdateView):
     def get_success_url(self):
         return reverse('homestudent')
 
+
+
+
+# Institute  Business codes: --------------------------------------------------------------->
+
 class Instituteinfo(ListView):
     model = Info
 
@@ -103,6 +113,9 @@ class Updateinfo(UpdateView):
     def get_success_url(self):
         return reverse('homeinstitute')
 
+
+
+# Admission letter  Business codes: ------------------------------------------------------------------------------>
 
 class AdmissionLetter(ListView):
     model = Students
@@ -115,6 +128,13 @@ class PrintDetail(DetailView):
     template_name = 'EDApp/printfile.html'
     def get_success_url(self):
         return reverse('homestudent')
+
+
+
+
+
+
+# Employees  Business codes: --------------------------------------------------------------->
 
 class AllEmployees(ListView):
     model = Employee
@@ -138,6 +158,11 @@ class DeleteEmployee(DeleteView):
     def get_success_url(self):
         return reverse('homeemployee')
 
+
+
+
+
+# Account Business codes: --------------------------------------------------------------->
 
 def AccountStatement(request):
     account = Account.objects.all()

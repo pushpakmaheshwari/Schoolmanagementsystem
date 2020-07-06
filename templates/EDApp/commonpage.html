@@ -27,6 +27,8 @@
   <div class="container-fluid">
 
 
+<!-- Navigation Bar links  -->
+
     {% if request.user.is_authenticated is False%}
   <ul class="nav navbar">
     <a> <img src="{% static "images/logo.png" %}" alt="EDSys" height="40" width="170"></a>
@@ -72,6 +74,10 @@
 {% endif %}
 </nav>
 
+
+
+
+<!-- Side Navigation links -->
 
 {% if request.user.is_authenticated is True%}
   <div class="sidenav">
@@ -119,6 +125,11 @@
     <a href="/accounts/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
   </div>
 {% endif %}
+
+
+
+
+<!-- Footer links -->
 
 {% if request.user.is_authenticated is True%}
 <div class="footer bg-midnight-bloom" style="margin-bottom:0px;padding-bottom:5px;padding-top:5px;border-top:0px solid dimgray;">
