@@ -1,0 +1,75 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+<head>
+
+</head>
+<style media="screen">
+
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 50px;
+  }
+
+  </style>
+
+<body>
+<hr>
+
+
+
+  <div class="row">
+    <div class="col-md-6 col-xl-12">
+        <div class="card style="text-align:center><br>
+          <div class="module-head row-fluid" style="background:#fff;padding:0px;border-bottom:1px solid silver;">
+          <form action="" method="post" style="margin-left:20px;float:left;">
+          								<b>FROM:</b>
+          								<input type="date" name="sd" style="width:180px;margin-top:10px;" required> <b>TO:</b>
+          								<input type="date" name="ed" style="width:180px;margin-top:10px;" required>
+          								<button type="submit" name="searchid" class="btn btn-success" style="margin:0px;"><i class="fas fa-search"></i> Statement</button>
+          								</form>
+                          <a href="#" onclick="return confirm('Are You Sure You Want To Delete Accounts Record ?')"><button class="btn" title="Delete Account Statement" style="margin-top:10px;float:right;"><i class="fas fa-trash"></i></button></a>
+                          <a href="#" onclick="return confirm('Are You Sure You Want To Reset Your Balance to Zero ?')"><button class="btn" title="Reset Profit 0" style="margin-top:10px;float:right;"><i class="fas fa-sync"></i></button></a>
+                          <button class="btn pull-right" title="Take Print" style="margin-top:10px; margin-top:10px;float:right;" id=print onclick="window.print();" ><i class="fas fa-print"></i></button>
+                          <a href="#"><button class="btn btn-danger" style="margin:10px;float:right;"><i class="fas fa-search"></i> This Month Statement</button></a>
+          </div>
+          <hr>
+
+          <table style="text-align:center; margin:auto;" id="sum_table" width="95%" border="1">
+            <thead>
+            <tr>
+              <th>Sr. No.</th> <th>Date</th> <th>Description</th> <th>Debt</th> <th>Credit</th> <th>Net Balance</th>
+            </tr>
+            </thead>
+            {% for account in account %}
+              <tbody>
+              <tr>
+                <td>{{account.id}}</td>
+                <td>{{account.date}}</td>
+                <td>{{account.description}}</td>
+                <td>{{account.expense}}</td>
+                <td>{{account.income}}</td>
+                <td><script> document.write({{account.income}}-{{account.expense}})</script></td>
+              </tr>
+              </tbody>
+              {% endfor %}
+              <tfoot>
+              <tr>
+                <th></th> <th></th> <th>Total</th> <td><b>Expense:</b> {{expense_sum}} </td> <td><b>Income:</b> {{income_sum}} </td> <td><b>Net Profit:</b> {{total_sum}}</td>
+              </tr>
+              </tfoot>
+
+          </table>
+          <br>
+          <p style="margin:auto"><a href="/addincome"><button  class="btn btn-success" type="button">Add Income</button></a>
+          <a href="/addexpense"><button  class="btn btn-danger" type="button">Add Expense</button></a></p>
+        </div>
+        </div>
+        </div>
+
+
+
+</body>
+
+{% endblock %}

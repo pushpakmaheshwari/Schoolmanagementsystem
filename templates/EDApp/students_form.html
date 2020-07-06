@@ -4,6 +4,14 @@
 {% load crispy_forms_tags %}
 <head>
   <link rel="stylesheet" href="/static/css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+  $(".f1c").click(function(){
+    $(".kaam").slideToggle();
+  });
+  });
+</script>
 </head>
 <style media="screen">
 
@@ -13,57 +21,172 @@
     padding: 0px 50px;
   }
 
+  #f1,#f2{
+	border:1px solid #fff;
+	color:#fff;
+	cursor:pointer;
+	padding:2px 6px;
+	background:#777;
+}
+
   #rcorners {
   border-radius: 5px;
-
 }
+
+.kaam{
+  display:none;
+}
+
 </style>
 <body>
 <hr>
 
+<div class="row">
+  <div class="col-md-6 col-xl-12">
+      <div class="card style="text-align:center><br>
+        <h3 style="text-align:center">Admission Form</h3><br>
+        <form method="post" enctype="multipart/form-data">
+          <h4 style="color:#fff;padding:5px;background:skyblue;"> BASIC INFORMATION * <i class="fas fa-chevron-up" id="f1" style="float:right;"></i></h4>
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 col-xl-12">
-        <div class="card style="text-align:center><br>
-          <div class="module">
-							<div class="module-head">
-								<h3 style="color:#333;text-align:center;">Admission Form</h3>
-							</div>
-              <div class="module-body" style="color:#333;background:;">
-              <form method="post" enctype="multipart/form-data">
-							<h4 style="color:#fff;padding:10px;background:skyblue; text-align:center"> STUDENT INFORMATION *</h4><br>
-						 <div class="row-fluid">
-    <form method="post" enctype="multipart/form-data" style="text-align:center">
-<p style="text-align:center"><label for="id_name_of_student"></label> <input type="text" placeholder="Name of Student" name="name_of_student" maxlength="100" required id="id_name_of_student"></p>
-<p style="text-align:center"><label for="id_registration_number"></label> <input style="margin-bottom:0px;" type="text" placeholder="Registration No." name="registration_number" maxlength="50" required id="id_registration_number"></p>
-<p style="text-align:center"><label for="id_gender">Name of class:</label><select>
-        <option>-----Select-----</option>
-        <option>Python Intern Camp</option>
-        <option>Java Bootcamp</option>
-        <option>HTML Crash Course</option>
-        <option>Node.JS</option>
-        </select></p>
-<p style="text-align:center">Admission Date: <input type="date" name="" value=""></p>
-<p style="text-align:center"><label for="id_mobile_number"></label> <input type="text" placeholder="Mobile number" name="mobile_number" maxlength="20" required id="id_mobile_number"></p>
-<p style="text-align:center"><label for="id_dob"></label> <input type="text" placeholder="Dob" name="dob" required id="id_dob"></p>
-<p style="text-align:center"><label for="id_gender">Gender:</label> <select name="gender" id="id_gender">
-<option value="Male">MALE</option>
-<option value="Female">FEMALE</option>
-</select></p>
-<p style="text-align:center"><label for="id_address"></label> <input placeholder="Address" type="text" name="address" maxlength="300" required id="id_address"></p>
+  <table style="width:100%;"><tr >
+        <td>
+        <table>
+        <tr>
+        <td>
+        <p><label for="id_name_of_student"></label> <input type="text" placeholder="Name of Student" name="name_of_student" maxlength="100" required id="id_name_of_student"></p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <label>Picture: <i>optional</i><br> <input type="file" name="fileToUpload" id="fileToUpload" ><br><i>(Max size 100KB)</i></label>
+        </td>
+        </tr>
+        </table>
+        </td>
+
+
+        <td>
+        <table>
+        <tr>
+        <td>
+          <p><label for="id_registration_number"></label> <input style="margin-bottom:0px;" type="text" placeholder="Registration No." name="registration_number" maxlength="50" required id="id_registration_number"></p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+          Admission Date:
+        <p><input type="date" name="" value=""></p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+          Date Of Birth:
+        <p><label for="id_dob"></label> <input type="text" placeholder="Dob" name="dob" required id="id_dob"></p>
+        </td>
+        </tr>
+        </table>
+        </td>
+
+
+        <td>
+        <table>
+        <tr>
+        <td>
+          Name of class:
+          <p><label for="id_gender"></label><select>
+                  <option>-----Select-----</option>
+                  <option>Python Intern Camp</option>
+                  <option>Java Bootcamp</option>
+                  <option>HTML Crash Course</option>
+                  <option>Node.JS</option>
+                  </select></p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <p><label for="id_mobile_number"></label> <input type="text" placeholder="Mobile number" name="mobile_number" maxlength="20" required id="id_mobile_number"></p>
+        </td>
+        </tr>
+        <tr>
+        <td>
+          Gender:
+          <p><label for="id_gender"></label> <select name="gender" id="id_gender">
+          <option value="Male">MALE</option>
+          <option value="Female">FEMALE</option>
+          </select></p>
+        </td>
+        </tr>
+        </table>
+        </td>
+        </tr>
+        </table>
+        </div>
+
+
+<h4 style="color:#fff;padding:5px;background:skyblue;"> OTHER INFO <i>(optional)</i><i class="fas fa-chevron-down f1c" id="f2" style="float:right;"></i></h4>
+<div class="container kaam">
+<table style="width:100%;"><tr >
+<td>
+<table>
+<tr>
+<td>
 <p style="text-align:center"><label for="id_father_name"></label> <input placeholder="Father name" type="text" name="father_name" maxlength="100" required id="id_father_name"></p>
+</td>
+</tr>
+<tr>
+<td>
 <p style="text-align:center"><label for="id_father_occupation"></label><input placeholder="Father occupation" type="text" name="father_occupation" maxlength="50" required id="id_father_occupation"></p>
-<p style="text-align:center"><label for="id_mother_name"></label><input placeholder="Mother name" type="text" name="mother_name" maxlength="100" required id="id_mother_name"></p>
-<p style="text-align:center"><label for="id_mother_occupation"></label><input placeholder="Mother occupation" type="text" name="mother_occupation" maxlength="50" required id="id_mother_occupation"></p>
+</td>
+</tr>
+<tr>
+<td>
 <p style="text-align:center"><label for="id_father_mobile_number"></label> <input placeholder="Father mobile number" type="text" name="father_mobile_number" maxlength="20" required id="id_father_mobile_number"></p>
-<p style="text-align:center"><label for="id_username"></label><input placeholder="Username" type="text" name="username" maxlength="50" required id="id_username"></p>
-<p style="text-align:center"><label for="id_password"></label><input placeholder="Password" type="text" name="password" maxlength="50" required id="id_password"></p>
-<p style="text-align:center"><button style="text-align:center" type="submit" class="btn btn-primary btn btn-large">Submit</button></p><br>
-  {% csrf_token %}
-  </form><br>
-  </div>
+</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr>
+<td>
+<p style="text-align:center"><label for="id_mother_name"></label><input placeholder="Mother name" type="text" name="mother_name" maxlength="100" required id="id_mother_name"></p>
+</td>
+</tr>
+<tr>
+<td>
+<p style="text-align:center"><label for="id_mother_occupation"></label><input placeholder="Mother occupation" type="text" name="mother_occupation" maxlength="50" required id="id_mother_occupation"></p>
+</td>
+</tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr>
+<td>
+  <p style="text-align:center"><label for="id_username"></label><input placeholder="Username" type="text" name="username" maxlength="50" required id="id_username"></p>
+</td>
+</tr>
+<tr>
+<td>
+  <p style="text-align:center"><label for="id_password"></label><input placeholder="Password" type="text" name="password" maxlength="50" required id="id_password"></p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p style="text-align:center"><label for="id_address"></label> <input style="width:90%" placeholder="Address" type="text" name="address" maxlength="300" required id="id_address"></p>
+</div>
+
+ {% csrf_token %}
+<p style="text-align:center;"><button type="submit" class="btn btn-primary btn btn-large" style="text-align:center">Submit</button></p>
+</form>
 </div>
 </div>
 </div>
+
+
 </body>
 {% endblock %}

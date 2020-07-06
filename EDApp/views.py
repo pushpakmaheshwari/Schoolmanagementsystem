@@ -3,8 +3,9 @@ from EDApp.forms import SignupForm
 from django.conf import settings
 from django.core.mail import send_mail
 from django.views.generic import View, ListView, TemplateView, CreateView, UpdateView, DeleteView, DetailView
-from EDApp.models import Info, Classes, Students, Employee
+from EDApp.models import Info, Classes, Students, Employee, Account
 from django.urls import reverse
+from django.db.models import Sum
 
 # Create your views here.
 
@@ -26,7 +27,12 @@ def HomePage(request):
     return render(request, 'EDApp/homepage.html')
 
 def AdminHomePage(request):
-    return render(request, 'EDApp/dashboardpage.html')
+    total_students = Students.objects.all().count()
+    total_employee = Employee.objects.all().count()
+    income_sum = list(Account.objects.aggregate(Sum('income')).values())[0]  #sum of income amount.
+    expense_sum = list(Account.objects.aggregate(Sum('expense')).values())[0]
+    total_profit = income_sum - expense_sum
+    return render(request, 'EDApp/dashboardpage.html', {'total_students':total_students, 'total_employee':total_employee, 'total_profit':total_profit})
 
 
 class AllClasses(ListView):
@@ -131,3 +137,25 @@ class DeleteEmployee(DeleteView):
     fields = '__all__'
     def get_success_url(self):
         return reverse('homeemployee')
+
+
+def AccountStatement(request):
+    account = Account.objects.all()
+    income_sum = list(Account.objects.aggregate(Sum('income')).values())[0]  #sum of income amount.
+    expense_sum = list(Account.objects.aggregate(Sum('expense')).values())[0]
+    total_sum = income_sum - expense_sum
+    return render(request, 'EDApp/account_list.html', {'account':account, 'income_sum':income_sum, 'expense_sum':expense_sum, 'total_sum':total_sum})
+
+class AddIncome(CreateView):
+    model = Account
+    fields = ['date','description','income']
+    template_name = 'EDApp/income_form.html'
+    def get_success_url(self):
+        return reverse('homeaccount')
+
+class AddExpense(CreateView):
+    model = Account
+    fields = ['date','description','expense']
+    template_name = 'EDApp/expense_form.html'
+    def get_success_url(self):
+        return reverse('homeaccount')

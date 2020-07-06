@@ -44,4 +44,8 @@ urlpatterns = [
     path('newemployee/',views.NewEmployees.as_view()),
     path('updateemployee/<pk>', views.UpdateEmployee.as_view()),
     path('deleteemployee/<pk>', views.DeleteEmployee.as_view()),
+    path('accountstatement/',views.AccountStatement, name='homeaccount'),
+    path('addincome/',views.AddIncome.as_view()),
+    path('addexpense/',views.AddExpense.as_view()),
+
 ]

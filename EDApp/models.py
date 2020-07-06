@@ -72,3 +72,12 @@ class Employee(models.Model):
     address = models.CharField(max_length=100)
     def __str__(self):
         return self.name_of_employee
+
+
+class Account(models.Model):
+    date = models.DateField(max_length=10)
+    description = models.CharField(max_length=300)
+    income = models.FloatField(default=0)
+    expense = models.FloatField(default=0)
+    def __str__(self):
+        return self.description
