@@ -126,7 +126,8 @@ body {
 
   .dropdown-container {
     display: none;
-    text-color: #111111;
+    font-size: 10px;
+    text-color: black;
     background-color: white;
     padding-left: 8px;
   }

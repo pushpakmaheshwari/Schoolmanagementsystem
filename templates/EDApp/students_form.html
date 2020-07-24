@@ -46,7 +46,7 @@
       <div class="card style="text-align:center><br>
         <h3 style="text-align:center">Admission Form</h3><br>
         <form method="post" enctype="multipart/form-data">
-          <h4 style="color:#fff;padding:5px;background:skyblue;"> BASIC INFORMATION * <i class="fas fa-chevron-up" id="f1" style="float:right;"></i></h4>
+<!-- WARNING:           <h4 style="color:#fff;padding:5px;background:skyblue;"> BASIC INFORMATION * <i class="fas fa-chevron-up" id="f1" style="float:right;"></i></h4>
 <div class="container">
   <table style="width:100%;"><tr >
         <td>
@@ -92,14 +92,9 @@
         <table>
         <tr>
         <td>
-          Name of class:
-          <p><label for="id_gender"></label><select>
-                  <option>-----Select-----</option>
-                  <option>Python Intern Camp</option>
-                  <option>Java Bootcamp</option>
-                  <option>HTML Crash Course</option>
-                  <option>Node.JS</option>
-                  </select></p>
+          <div id="div_id_name_of_class" class="form-group"> <label for="id_name_of_class" class=" requiredField">
+                Name of class<span class="asteriskField">*</span> </label> <div class=""> <select name="name_of_class" class="select form-control" id="id_name_of_class">
+
         </td>
         </tr>
         <tr>
@@ -186,6 +181,20 @@
 </div>
 </div>
 </div>
+ -->
+
+<hr><hr>
+
+<div class="container " id="mrgin-top">
+
+    <h1>Add student</h1>
+    <form method="post" enctype="multipart/form-data">
+      {{form|crispy}}
+      {% csrf_token %}
+      <input type="submit" class="btn btn-lg btn-info btn-block" value="Add">
+    </form>
+</div>
+
 
 
 </body>

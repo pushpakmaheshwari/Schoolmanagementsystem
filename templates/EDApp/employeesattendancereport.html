@@ -1,0 +1,54 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<style media="screen">
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 50px;
+  }
+</style>
+
+<body>
+<hr>
+
+  <div class="row">
+    <div class="col-md-6 col-xl-12">
+        <div class="card style="text-align:center">
+          <div class="content" style="text-align:center;margin-top:15px;">
+              <h2 style="color:#333;">Employees Attendence</h2><hr>
+              <form method="get">
+                <table class="table table-hover">
+                  <tr>
+                    <td><b>ID</b></td>
+                    <td><b>Joining Date</b></td>
+                    <td><b>Employee Name</b></td>
+                    <td><b>Employee Type</b></td>
+                    <td><b>Status</b></td>
+                  </tr>
+                  {% for employee in employee_list %}
+                  <tr>
+                    <td>{{employee.id}}</td>
+                    <td>{{employee.joining_date}}</td>
+                    <td>{{employee.name_of_employee}}</td>
+                    <td>{{employee.Employee_type}}</td>
+                    <td>{{employee.status}}</td>
+                    <td style="width:auto;">
+
+                    </td>
+                  </tr>
+                  {% endfor %}
+                  </table>
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-primary btn btn-large">Submit</button><br><br>
+                </form>
+              </div>
+          </div>
+          </div>
+          </div>
+
+  {% endblock %}

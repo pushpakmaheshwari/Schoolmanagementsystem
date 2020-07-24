@@ -61,4 +61,25 @@ urlpatterns = [
     path('addincome/',views.AddIncome.as_view()),
     path('addexpense/',views.AddExpense.as_view()),
 
+
+
+#    path('markstudentsattendance/',views.MarkStudentsAttendance.as_view()),
+#    path('markemployeesattendance/',views.MarkEmployeesAttendance.as_view()),
+#    path('studentsattendancereport/',views.StudentsAttendanceReport.as_view()),
+#    path('employeesattendancereport/',views.EmployeesAttendanceReport.as_view()),
+#    path('attendencesheet/',views.AttendenceSheet),
+
+
+# Attendance URL's :
+    path('allclassattendance/', views.AllClassAttendance, name='all_class_attendance_view'),
+    path('studentattendance/<int:pk>', views.StudentAttendance, name='student_attendance'),
+    path('employeeattendace/', views.EmployeeAttendance, name='employee_attendance'),
+    path('studentattreport/', views.StudentAttedanceReport.as_view(), name='student_attendance_report'),
+    path('employeeattreport/', views.EmployeeAttedanceReport.as_view(), name='employee_attendance_report'),
+
+
+# Fees URL's :
+    path('submitfees/',views.SubmitFees.as_view()),
+    path('detail/<pk>',views.Details.as_view()),
+    #path('submitfees/',views.SubmitFees.as_view()),
 ]

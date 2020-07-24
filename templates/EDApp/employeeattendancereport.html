@@ -1,0 +1,41 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<style media="screen">
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 50px;
+  }
+</style>
+
+<br>
+<div class="row">
+  <div class="col-md-6 col-xl-12">
+      <div class="card" style="text-align:center">
+        <div class="content" style="text-align:center;margin-top:15px;">
+          <h1 align=center>Employee Attendance Report</h1> <br>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+      <td>DATE</td>  <th>ID</th>   <th>NAME</th>   <th>COURSE</th>   <th>STATUS</th>
+      </tr>
+    </thead>
+{% if employeereport %}
+  {% for data in employeereport %}
+  <tr>
+  <td>{{data.date}}</td> <td>{{data.id}}</td> <td> {{data.StudentName}} </td> <td>{{data.Class}}</td> <td>{{data.status}}</td>
+</tr>
+  {% endfor %}
+{% endif %}
+</table>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

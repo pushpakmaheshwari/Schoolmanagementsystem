@@ -11,7 +11,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" href="/static/css/main.css">
-  </head>
+
   <style media="screen">
     .footer {
      position: fixed;
@@ -20,7 +20,7 @@
      width: 100%;
     }
   </style>
-
+</head>
   <body>
 
 <nav class="navbar navbar-expand-md bg-transparent navbar-dark navbar-inner">
@@ -83,9 +83,8 @@
   <div class="sidenav">
     <a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
     <a href="/info"><i class="fas fa-building"></i> Institute Info</a>
-    <button class="dropdown-btn"><i class="fas fa-users"></i> Classes
-      <i class="fa fa-caret-down"></i>
-    </button>
+
+    <button class="dropdown-btn"><i class="fas fa-users"></i> Classes<i class="fa fa-caret-down"></i></button>
     <div class="dropdown-container">
       <a href="/allclasses"><i class="fas fa-users"></i> All Classes</a>
       <a href="/newclass"><i class="fas fa-plus"></i> New Class</a>
@@ -93,29 +92,43 @@
       <a href="/subjectstoclasses"><i class="fas fa-book"></i> Subjects to Classes</a>
       <a href="/addsubjects"><i class="fas fa-plus"></i> Add Subjects</a>
     </div>
-    <button class="dropdown-btn"><i class="fas fa-user-graduate"></i> Students
-      <i class="fa fa-caret-down"></i>
-    </button>
+
+    <button class="dropdown-btn"><i class="fas fa-user-graduate"></i> Students<i class="fa fa-caret-down"></i></button>
     <div class="dropdown-container">
       <a href="/allstudents"><i class="fas fa-users"></i> All Students</a>
       <a href="/newstudent"><i class="fas fa-plus"></i> New Student/Admission</a>
       <a href="/admissionletter"><i class="fas fa-book"></i> Admission Letter</a>
     </div>
-    <button class="dropdown-btn"><i class="fas fa-bars"></i> Employees
-      <i class="fa fa-caret-down"></i>
-    </button>
+
+    <button class="dropdown-btn"><i class="fas fa-bars"></i> Employees<i class="fa fa-caret-down"></i></button>
     <div class="dropdown-container">
       <a href="/allemployees"><i class="fas fa-users"></i> All Employees</a>
       <a href="/newemployee"><i class="fas fa-plus"></i> New Employee</a>
     </div>
+
     <button class="dropdown-btn"><i class="fas fa-user-circle"></i> Accounts</a><i class="fa fa-caret-down"></i></button>
     <div class="dropdown-container">
       <a href="/accountstatement"><i class="fas fa-chart-bar"></i> Account Statement</a>
       <a href="/addincome"><i class="fas fa-plus"></i> Add Income</a>
       <a href="/addexpense"><i class="fas fa-plus"></i> Add Expense</a>
     </div>
-    <a href="#"><i class="fas fa-clipboard"></i> Attendance</a>
-    <a href="#"><i class="fas fa-dollar-sign"></i> Fees</a>
+
+    <button class="dropdown-btn"><i class="fas fa-clipboard"></i> Attendance<i class="fa fa-caret-down"></i></button>
+    <div class="dropdown-container">
+      <a href="/allclassattendance"><i class="fas fa-hand-point-up"></i> Mark Students Attendance</a>
+      <a href="/employeeattendace"><i class="fas fa-hand-point-up"></i> Mark Employees Attendance</a>
+      <a href="#"><i class="fas fa-chart-bar"></i> Today Attendance Report</a>
+      <a href="/studentattreport"><i class="fas fa-copy"></i> Students Attendance Report</a>
+      <a href="/employeeattreport"><i class="fas fa-copy"></i> Employees Attendance Report</a>
+    </div>
+
+    <button class="dropdown-btn"><i class="fas fa-dollar-sign"></i> Fees<i class="fa fa-caret-down"></i></button>
+    <div class="dropdown-container">
+      <a href="/submitfees"><i class="fas fa-money-bill-alt"></i> Submit Fees</a>
+      <a href="#"><i class="fas fa-clipboard-list"></i> Get Fee Slip</a>
+      <a href="#"><i class="fas fa-user"></i> Fee Defaulters</a>
+    </div>
+
     <a href="#"><i class="fas fa-money-bill-wave"></i> Salary</a>
     <a href="#"><i class="fas fa-bars"></i> Exams</a>
     <a href="#"><i class="fas fa-copy"></i> Class Test</a>

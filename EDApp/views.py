@@ -3,9 +3,10 @@ from EDApp.forms import SignupForm
 from django.conf import settings
 from django.core.mail import send_mail
 from django.views.generic import View, ListView, TemplateView, CreateView, UpdateView, DeleteView, DetailView
-from EDApp.models import Info, Classes, Students, Employee, Account
+from EDApp.models import Info, Classes, Students, Employee, Account, EdsysClass, StudentAttendance, Attendance
 from django.urls import reverse
 from django.db.models import Sum
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -184,3 +185,99 @@ class AddExpense(CreateView):
     template_name = 'EDApp/expense_form.html'
     def get_success_url(self):
         return reverse('homeaccount')
+
+
+
+
+
+# Attendance Business codes: --------------------------------------------------------------->
+'''
+class MarkStudentsAttendance(ListView):
+    model = Classes
+    template_name = 'EDApp/markstudentsattendance.html'
+
+
+class MarkEmployeesAttendance(ListView):
+    model = Employee
+    template_name = 'EDApp/markemployeesattendance.html'
+
+
+class StudentsAttendanceReport(ListView):
+    model = Students
+    template_name = 'EDApp/studentsattendancereport.html'
+
+
+class EmployeesAttendanceReport(ListView):
+    model = Employee
+    template_name = 'EDApp/employeesattendancereport.html'
+
+
+#class AttendenceSheet(DetailView):
+#    model = Students
+#    template_name = 'EDApp/attendencesheet.html'
+
+
+def AttendenceSheet(request):
+    if request.method == 'POST':
+        cid = method.POST['class_id']
+'''
+
+
+def AllClassAttendance(request):
+    classes = EdsysClass.objects.all()
+    if request.method == 'POST' and 'search' in request.POST:
+        dropdown_val = request.POST.get('dropdownlist')
+        return HttpResponseRedirect("/studentattendance"+dropdown_val)
+    return render(request, 'EDApp/allattendance.html', {'classes':classes})
+
+
+            #View for saving student attendance
+def StudentAttendance(request, pk):
+    allclass = EdsysClass.objects.get(id=pk)
+    if request.method == 'POST':
+
+        name = request.POST.get('studentname')
+        sid = request.POST.get('studentid')
+        classes = request.POST.get('class')
+        date = "2020-12-06"
+        val = request.POST.get('x')
+
+        data = Attendance.objects.create(
+                                # id = sid,
+                                Class = classes,
+                                date = date,
+                                StudentName = name,
+                                status = val,
+                            )
+        data.save()
+        # return HttpResponse("/studentattendance")
+
+    return render(request, 'EDApp/studentattendance.html', {'allclass':allclass})
+
+            # ListView For Student Attendance Report.
+class StudentAttedanceReport(ListView):
+    model = Attendance
+    context_object_name = "studentreport"
+    template_name = "EDApp/studentattendancereport.html"
+
+class EmployeeAttedanceReport(ListView):
+    model = Attendance
+    context_object_name = "employeereport"
+    template_name = "EDApp/employeeattendancereport.html"
+
+
+def EmployeeAttendance(request):
+    allemp = Employee.objects.all()
+    return render(request, 'EDApp/employeeattendance.html', {'allemp':allemp})
+
+
+# Fees Business codes: --------------------------------------------------------------->
+
+class SubmitFees(ListView):
+    model = Students
+    template_name = 'EDApp/submitfees.html'
+
+
+class Details(DetailView):
+    model = Students
+    template_name = 'EDApp/detailofstudent.html'

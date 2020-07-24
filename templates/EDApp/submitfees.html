@@ -1,0 +1,40 @@
+{% extends 'EDApp/commonpage.html' %}
+{% block parentblock %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<style media="screen">
+  .row {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 50px;
+  }
+</style>
+
+<body>
+<hr>
+
+  <div class="row">
+    <div class="col-md-6 col-xl-12">
+        <div class="card style="text-align:center"">
+          <div class="content" style="text-align:center;margin-top:15px;">
+             <h2 style="color:#333;">Search Student For Fee Submission</h2><hr>
+
+					   <select>
+             <option> ----- Select Registration Number ----- </option>
+             {%for student in students_list %}
+             <option> {{student.registration_number}} </option>
+             {% endfor %}
+             </select>
+             <br><br>
+            {%for student in students_list %} <a href="/detail/{{student.registration_number}}"> {% endfor %} <button type="submit" class="btn btn-primary btn btn-large">Submit</button></a><br>
+
+
+					</div>
+				</div>
+        </div>
+        </div>
+
+{% endblock %}
